@@ -11,10 +11,9 @@ Rails.application.routes.draw do
 # A visitor can see the details of a restaurant, with all the reviews related to the restaurant.
 # get '/restaurants/:id', to: 'restaurants#show' # GET "restaurants/38"
 
-# A visitor can add a new review to a restaurant
+# A visitor can add a new review to a restaurant (need to create a review model)
 # get '/restaurants/new', to: 'restaurants#new'  # GET "restaurants/38/reviews/new"
 # post '/restaurants', to: 'restaurants#create'  # POST "restaurants/38/reviews"
 
-resources :restaurants
-
+  resources :restaurants
 end
