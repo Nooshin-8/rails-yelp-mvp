@@ -11,8 +11,8 @@ class ReviewsController < ApplicationController
   # The id is in the url but the content is not but they are in the same hash
   def create
     @review = Review.new(review_params)
-    @review.restaurant = @restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @review.restaurant = @restaurant
 
     if @review.save
       redirect_to restaurant_path(@restaurant)
@@ -33,7 +33,6 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     @review.destroy
-    redirect_to restaurant_path(review.restaurant)
     redirect_to restaurant_path(@review.restaurant)
   end
 
@@ -41,6 +40,6 @@ class ReviewsController < ApplicationController
 
   # a hash of form data with non-permitted keys filtered out
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :rating)
   end
 end

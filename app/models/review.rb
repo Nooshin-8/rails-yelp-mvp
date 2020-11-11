@@ -9,7 +9,7 @@ class Review < ApplicationRecord
 
   # review’s rating must be a number between 0 and 5.
   validates :rating, numericality: true
-  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5, only_integer: true}
+  validates :rating, inclusion: { in: 0..5 }
 end
 
   # :greater_than_or_equal_to - Specifies the value must be

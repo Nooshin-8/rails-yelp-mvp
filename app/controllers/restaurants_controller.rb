@@ -12,9 +12,15 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(params[:id])
+    @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
     redirect_to restaurant_path(@restaurant) # redirected to the show page
+
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   # A visitor can see the details of a restaurant, so we need the id
